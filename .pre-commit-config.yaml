@@ -1,0 +1,37 @@
+---
+
+# https://pre-commit.ci
+ci:
+  autoupdate_branch: main
+  autoupdate_schedule: weekly
+  autoupdate_prs: true
+
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.2
+    hooks:
+      - id: gitleaks
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-toml
+        exclude: .*/\.github/.*
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: pretty-format-json
+      - id: trailing-whitespace
+      # FIXME|2024-04-16|: This hook is disabled because `grep` is not present in repository https://github.com/pre-commit/pre-commit-hooks.
+      # - id: grep
+      #   name: Check for FIXME comments
+      #   description: This hook checks for code comments containing FIXME.
+      #   entry: --color=always
+      #   language: pygrep
+      #   types: [text]
+      #   args: ['--multiline', 'FIXME']
