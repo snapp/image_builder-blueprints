@@ -1,0 +1,40 @@
+---
+
+dictionaryDefinitions:
+  - name: Spellcheck Overrides
+    path: ./cspell_dictionary.txt
+    addWords: true
+
+dictionaries:
+  - overrides
+
+words:
+  - changeme
+  - Colour
+  - datastream
+  - distro
+  - firewalld
+  - gruntfuggly
+  - ifnames
+  - langpack
+  - mountpoint
+  - NOPASSWD
+  - ntpservers
+  - openscap
+  - oscap
+  - scap
+  - setools
+  - snappca
+  - ssgproject
+  - sshkey
+  - tamasfe
+  - taplo
+  - virtualenvs
+  - xccdf
+
+ignorePaths:
+  - "**/.github/CODEOWNERS"
+  - "**/.github/settings.yml"
+  - "**/.gitignore"
+  - "**/.pre-commit-config.yaml"
+  - "**/cspell.config.yml"
