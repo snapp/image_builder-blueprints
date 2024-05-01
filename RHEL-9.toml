@@ -4,14 +4,15 @@ version = '1.0.0'
 
 name = 'RHEL-9'
 
+# https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9
 description = 'Red Hat Enterprise Linux (RHEL) 9'
 
 distro = 'rhel-9'
 
-# [customizations]
+[customizations]
 # hostname = 'custombase'
 # installation_device = '/dev/vda'
-# partitioning_mode = 'auto-lvm'
+partitioning_mode = 'auto-lvm'
 
 # [[customizations.directories]]
 # path = '/etc/foo'
@@ -21,11 +22,11 @@ distro = 'rhel-9'
 # ensure_parents = false
 
 # [[customizations.files]]
-# path = '/etc/foo/bar'
-# mode = '0644'
+# path = '/etc/sudoers.d/ansible'
+# mode = '0440'
 # user = 'root'
 # group = 'root'
-# data = 'Hello world!'
+# data = 'ansible  ALL=(ALL)  NOPASSWD: ALL'
 
 # [customizations.firewall]
 # ports = ['22:tcp', '80:tcp', 'imap:tcp', '53:tcp', '53:udp', '30000-32767:tcp', '30000-32767:udp']
@@ -56,7 +57,7 @@ distro = 'rhel-9'
 
 # [[customizations.sshkey]]
 # user = 'root'
-# key = 'ssh-rsa AAAAB.*N8eviE2t50lm== Root Admin'
+# key = 'ssh-rsa AAAAB..REDACTED== Root Admin'
 
 # [customizations.timezone]
 # timezone = 'UTC'
@@ -68,14 +69,36 @@ distro = 'rhel-9'
 # masked = ['rpcbind']
 
 # [[customizations.group]]
-# name = 'students'
+# name = 'ansible'
+# gid = 888
 
 # [[customizations.user]]
-# name = 'admin'
-# description = 'Widget Admin'
-# password = '$6$CHO2$3rN8eviE2t50lm0/wm7sW/q39uyd1'
-# key = 'ssh-rsa AAAAB.*N8eviE2t50lm== Widget Admin'
-# home = '/srv/widget/'
+# name = 'ansible'
+# description = 'Ansible Service Account'
+# password = '<REDACTED>'
+# key = 'ssh-rsa AAAAB..REDACTED== Ansible Service Account'
+# home = '/var/lib/ansible/'
 # shell = '/usr/bin/bash'
-# groups = ['widget', 'users', 'students']
-# uid = 1200
+# groups = []
+# uid = 888
+# gid = 888
+
+# [[packages]]
+# name = 'bash-completion'
+# version = '*'
+
+# [[packages]]
+# name = 'bind-utils'
+# version = '*'
+
+# [[packages]]
+# name = 'man-pages'
+# version = '*'
+
+# [[packages]]
+# name = 'setools-console'
+# version = '*'
+
+# [[packages]]
+# name = 'vim-enhanced'
+# version = '*'
